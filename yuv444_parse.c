@@ -9,12 +9,12 @@ int simplest_yuv444_split(char *url, int w, int h, int num)
     FILE *fp3 = fopen("output_444_v.y", "wb+");
     unsigned char *pic = (unsigned char *)malloc(w * h * 3);
 
-    for(int i;i < num; i++)
+    for(int i = 0;i < num; i++)
     {
         fread(pic, 1, w * h * 3, fp);
         fwrite(pic, 1, w * h, fp1);
-        fwrite(pic + w * h,1,w*h,fp2);
-        fwrite(pic + 2 * w * h,1, w*h,fp3);
+        fwrite(pic + w * h,1,w * h,fp2);
+        fwrite(pic + 2 * w * h,1, w * h,fp3);
     }
 
     free(pic);
@@ -29,6 +29,6 @@ int simplest_yuv444_split(char *url, int w, int h, int num)
 int main()
 {
     printf("yuv444 parse...\r\n");
-    simplest_yuv444_split("lena_256x256_yuv444p.yuv",256,256,1);
+    simplest_yuv444_split("./lena_256x256_yuv444p.yuv",256,256,1);
     return 0;
 }
