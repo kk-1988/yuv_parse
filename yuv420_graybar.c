@@ -12,6 +12,7 @@ int simplest_yuv420_graybar(int width, int height, int ymin, int ymax, int barnu
     unsigned char *data_y = NULL;
     unsigned char *data_u = NULL;
     unsigned char *data_v  = NULL;
+    int t=0,i=0,j=0;
 
     barwidth = width / barnum;
     lum_inc = ((float)(ymax - ymin)) / ((float)(barnum - 1));
@@ -65,7 +66,7 @@ int simplest_yuv420_graybar(int width, int height, int ymin, int ymax, int barnu
         }
     }
 
-    fwrite(data_y,width * heigth, 1, fp);
+    fwrite(data_y,width * height, 1, fp);
     fwrite(data_u, uv_width * uv_height, 1, fp);
     fwrite(data_v, uv_width * uv_height, 1 , fp);
     fclose(fp);
